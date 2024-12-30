@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 const contianerVariant = {
     hidden: {
@@ -8,7 +8,25 @@ const contianerVariant = {
     },
     visible: {
         opacity: 1,
-        x: "0"
+        x: "0",
+        transition: {
+            type: "spring",
+            stiffness: 50,
+            delay: 0.1,
+        }
+    }
+}
+
+const nextVariants = {
+    hidden: {
+        y: "30vh"
+    },
+    visible: {
+        y: 0,
+        transition: {
+            type: "spring",
+            stiffness: 120
+        }
     }
 }
 
@@ -26,11 +44,11 @@ const Base = ({ addBase, pizza }: any) => {
         variants={contianerVariant}
         initial="hidden"
         animate="visible"
-        transition={{
-            type: "spring",
-            stiffness: 50,
-            delay: 0.5,
-        }}
+        // transition={{
+        //     type: "spring",
+        //     stiffness: 50,
+        //     delay: 0.5,
+        // }}
     >
 
       <h3>Step 1: Choose Your Base</h3>
@@ -38,25 +56,38 @@ const Base = ({ addBase, pizza }: any) => {
         {bases.map(base => {
           let spanClass = pizza.base === base ? 'active' : '';
           return (
-            <li key={base} onClick={() => addBase(base)}>
+            <motion.li key={base} onClick={() => addBase(base)}
+                whileHover={{
+                    scale: 1.15,
+                    originX: 0,
+                    color: "#f8e112",
+                }}
+                transition={{
+                    type: "spring",
+                    stiffness: 300
+                }}
+            >
               <span className={spanClass}>{ base }</span>
-            </li>
+            </motion.li>
           )
         })}
       </ul>
 
       {pizza.base && (
         <motion.div className="next"
-            initial={{
-                y: "10vh"
-            }}
-            animate={{  
-                y: 0,
-            }}
-            transition={{
-                type: "spring",
-                stiffness: 120
-            }}
+            variants={nextVariants}
+            // initial="hidden"
+            // animate="visible"
+            // initial={{
+            //     y: "10vh"
+            // }}
+            // animate={{  
+            //     y: 0,
+            // }}
+            // transition={{
+            //     type: "spring",
+            //     stiffness: 120
+            // }}
         >
           <Link to="/toppings">
             <motion.button
