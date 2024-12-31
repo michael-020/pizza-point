@@ -30,6 +30,19 @@ const nextVariants = {
     }
 }
 
+const buttonVariants = {
+    hover: {
+        scale: 1.1,
+        textShadow: "0px 0px 8px rgb(255,255,255)",
+        boxShadow: "0px 0px 8px rgb(255,255,255)",
+        transition: {
+            duration: 0.3,
+            repeat: Infinity,
+            repeatType: "reverse" 
+        }
+    }
+}
+
 const Base = ({ addBase, pizza }: any) => {
   const bases = ['Classic', 'Thin & Crispy', 'Thick Crust'];
 
@@ -91,11 +104,13 @@ const Base = ({ addBase, pizza }: any) => {
         >
           <Link to="/toppings">
             <motion.button
-                className='hover:shadow-[0_0px_8px_0_rgba(255,255,255)] '
-                whileHover={{
-                    scale: 1.15,
-                    textShadow: "0px 0px 8px rgb(255,255,255)"
-                }}
+                // whileHover={{
+                //     scale: 1.15,
+                //     boxShadow: "0px 0px 8px rgb(255,255,255)",
+                //     textShadow: "0px 0px 8px rgb(255,255,255)"
+                // }}
+                variants={buttonVariants as any}
+                whileHover={"hover"}
                 whileTap={{
                     scale: 0.95
                 }}

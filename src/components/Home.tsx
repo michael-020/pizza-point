@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom';
 import {motion} from "framer-motion"
 
+const buttonVariants = {
+    hover: {
+        scale: 1.1,
+        textShadow: "0px 0px 8px rgb(255,255,255)",
+        boxShadow: "0px 0px 8px rgb(255,255,255)",
+        transition: {
+            duration: 0.3,
+            repeat: Infinity,
+            repeatType: "reverse" 
+        }
+    }
+}
+
 const Home = () => {
   return (
     <motion.div className="home container "
@@ -33,14 +46,17 @@ const Home = () => {
       </motion.h2>
       <Link to="/base">
         <motion.button
-            className='hover:shadow-[0_0px_8px_0_rgba(255,255,255)] '
-            whileHover={{
-                scale: 1.15,
-                textShadow: "0px 0px 8px rgb(255,255,255)"
-            }}
-            whileTap={{
-                scale: 0.95
-            }}
+            variants={buttonVariants as any}
+            whileHover="hover"
+            // animate="visible"
+            // whileHover={{
+            //     scale: 1.15,
+            //     boxShadow: "0px 0px 8px rgb(255,255,255)",
+            //     textShadow: "0px 0px 8px rgb(255,255,255)"
+            // }}
+            // whileTap={{
+            //     scale: 0.95
+            // }}
         >
           Create Your Pizza
         </motion.button>

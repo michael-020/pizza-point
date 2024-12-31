@@ -37,7 +37,7 @@ const Order = ({ pizza }: any) => {
         initial="hidden"
         animate="visible"
     >
-      <h2>Thank you for your order :)</h2>
+      <h2>{"Thank you for your order :)"}</h2>
       <motion.p
         variants={childVariants}
       >You ordered a {pizza.base} pizza with:</motion.p>
