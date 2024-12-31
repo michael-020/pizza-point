@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, useCycle } from "framer-motion"
 
 const loaderVariants = {
     animationOne: {
@@ -17,17 +17,37 @@ const loaderVariants = {
                 ease: "easeOut"
             }
         }
+    },
+    animationTwo: {
+        y: [0, -40],
+        x: 0,
+        transition: {
+            y: {
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeOut",
+            }
+        }
     }
 }
 
 export const Loader = () => {
+    const [animation, cycleAnimation] = useCycle("animationOne", "animationTwo")
+
   return (
-    <motion.div
-        className="w-[10px] h-[10px] my-[40px] mx-auto rounded-full bg-white "
-        variants={loaderVariants}
-        animate="animationOne"
-    >
-        
-    </motion.div>
+    <div>
+        <motion.div
+            className="w-[10px] h-[10px] my-[40px] mx-auto rounded-full bg-white "
+            variants={loaderVariants}
+            animate={animation}
+            >
+        </motion.div>
+        <div
+            className="cursor-pointer "
+            onClick={() => {
+                cycleAnimation()
+            }}
+        >Cycle Loader</div>
+    </div>
   )
 }
