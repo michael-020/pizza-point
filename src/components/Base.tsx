@@ -14,6 +14,12 @@ const contianerVariant = {
             stiffness: 50,
             delay: 0.1,
         }
+    }, 
+    exit: {
+      x: "-100vw",
+      transition: {
+        ease: "easeInOut"
+      }
     }
 }
 
@@ -57,6 +63,7 @@ const Base = ({ addBase, pizza }: any) => {
         variants={contianerVariant}
         initial="hidden"
         animate="visible"
+        exit={"exit"}
         // transition={{
         //     type: "spring",
         //     stiffness: 50,
