@@ -24,7 +24,7 @@ const modal = {
     }
 }
 
-export const Modal = ({showModal, setShowModal} : any) => {
+export const Modal = ({showModal} : any) => {
   return (
     <AnimatePresence mode="wait">
         {showModal && (
