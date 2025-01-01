@@ -66,7 +66,7 @@ const Home = () => {
             duration: 1,
         }}
       >
-        Welcome to Pizza Joint
+        Welcome to Pizza Point
       </motion.h2>
       <Link to="/base">
         <motion.button
