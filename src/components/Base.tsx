@@ -64,11 +64,7 @@ const Base = ({ addBase, pizza }: any) => {
         initial="hidden"
         animate="visible"
         exit={"exit"}
-        // transition={{
-        //     type: "spring",
-        //     stiffness: 50,
-        //     delay: 0.5,
-        // }}
+        
     >
 
       <h3>Step 1: Choose Your Base</h3>
