@@ -24,6 +24,18 @@ const contianerVariant = {
 }
 
 const buttonVariants = {
+    hidden: {
+      opacity: 0,
+      y: "30vh"
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+      }
+    },
     hover: {
         scale: 1.1,
         textShadow: "0px 0px 8px rgb(255,255,255)",
@@ -68,18 +80,24 @@ const Toppings = ({ addTopping, pizza }: any) => {
           )
         })}
       </ul>
-
-      <Link to="/order">
-        <motion.button
-            variants={buttonVariants as any}
-            whileHover={"hover"}
-            whileTap={{
-                scale: 0.95
-            }}
-        >
-          Order
-        </motion.button>
-      </Link>
+        {
+          pizza.toppings.length > 0 && (
+            <Link to="/order">
+              <motion.button
+                  variants={buttonVariants as any}
+                  whileHover={"hover"}
+                  initial="hidden"
+                  animate="visible"
+                  whileTap={{
+                      scale: 0.95
+                  }}
+              >
+                Order
+              </motion.button>
+            </Link>
+          )
+        }
+      
 
     </motion.div>
   )
