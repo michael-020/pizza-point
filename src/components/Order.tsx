@@ -48,7 +48,7 @@ const Order = ({ pizza, setShowModal }: any) => {
         initial="hidden"
         animate="visible"
     >
-      <h2>{"Thank you for your order :)"}</h2>
+      <h2 className="text-xl">{"Thank you for your order :)"}</h2>
       <motion.p
         variants={childVariants}
       >You ordered a {pizza.base} pizza with:</motion.p>
